@@ -33,10 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :production do
-  #Use Postgress for database
-  gem "pg"
-  #Use as dependency for postgress
-  gem "rails_12factor"
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :development, :test do
@@ -45,8 +43,11 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+
+  #Use Postgress for database
+  gem "pg"
+  #Use as dependency for postgress
+  gem "rails_12factor"
 end
 
 group :development do
