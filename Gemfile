@@ -37,8 +37,7 @@ gem 'jbuilder', '~> 2.5'
 group :production do
   #Use Postgress for database
   gem "pg"
-  #Use as dependency for postgress
-  gem "rails_12factor"
+
 end
 
 group :development, :test do
