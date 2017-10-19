@@ -1,0 +1,38 @@
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="id"style="margin-left: 4vw;">
+      <a class="nav-link active">
+      <%= link_to image_tag("", :type => :upload,
+             :width => 100, :height => 50, :crop => :fill), root_path %> </a>
+    </div>
+
+        <% if user_signed_in? %>
+           <!-- New Post', -->
+           <div class="row pull-right">
+              <div class="section1 ">
+                  <%= link_to new_product_path, method: :get, class: "nav-link" do %>
+                    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+                  <% end %>
+              </div>
+          <!-- 'sign out', -->
+              <div class="section3">
+                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                   <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+                   <% end %>
+              </div>
+          </div>
+
+        <% else %>
+            <div class="section1 pull-right">
+                 <%= link_to new_user_registration_path , method: :get, class: "nav-link" do %>
+                 <i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
+                 <% end %>
+
+                 <%= link_to new_user_session_path , method: :get, class: "nav-link" do %>
+                 <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>
+                 <% end %>
+            </div>
+        <% end %>
+
+  </nav>
