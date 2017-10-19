@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # adding stripe gem
-gem 'stripe'
+# gem 'stripe'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -34,10 +34,12 @@ gem 'stripe'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# group :production do
-#   # Use sqlite3 as the database for Active Record
-#   # gem 'sqlite3'
-# end
+group :production do
+  #Use Postgress for database
+  gem "pg"
+  #Use as dependency for postgress
+  gem "rails_12factor"
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,10 +48,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 
-  #Use Postgress for database
-  gem "pg"
-  #Use as dependency for postgress
-  gem "rails_12factor"
 end
 
 group :development do
@@ -59,6 +57,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
