@@ -13,5 +13,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :charges, :reviews
+<<<<<<< HEAD
+  has_many :charges
+=======
+  has_many :reviews
+
+>>>>>>> 67642707f6c64398cd945f06a9173facac9f6480
 end
