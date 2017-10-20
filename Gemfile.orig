@@ -5,20 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem "bootstrap-sass-rails", "~> 2.2.2.0"
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem "font-awesome-rails"
-
-
-
+<<<<<<< HEAD
 gem 'stripe'
-
+=======
 gem 'petergate'
-
-gem 'stripe'
+>>>>>>> 67642707f6c64398cd945f06a9173facac9f6480
 
 
 

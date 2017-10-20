@@ -1,4 +1,6 @@
+
 require "stripe"
+
 
 Rails.configuration.stripe = {
   :publishable_key => ENV['PUBLISHABLE_KEY'],

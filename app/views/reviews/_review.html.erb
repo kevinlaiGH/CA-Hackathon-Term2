@@ -1,7 +1,16 @@
+
+
 <div class="review">
-<p><%= review.rating %></p>
-<p class="review-comment">
-  <%= review.comment %>
-</p>
+
+    <div class="review-rating" data-score="<%= review.rating %>"> </div>
+      <p class="review-comment"> <%= review.comment %> </p>
+
+    <p><small> commented <strong><%= time_ago_in_words(review.created_at) %> ago </strong> by <%= review.user.email %> </small></p>
+
+      <% if review.user.id == current_user.id %>
+        <%= link_to "Delete", product_review_path(review.product, review), method: :delete %>
+      <% end %>
+    |  <%= link_to "Add reviews", new_product_review_path(@product), class: "btn-custom"  %>
+  </p>
 
 </div>
