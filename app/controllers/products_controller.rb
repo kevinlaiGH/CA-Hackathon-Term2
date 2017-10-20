@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, admin: :all
 
   # GET /products
   # GET /products.json
