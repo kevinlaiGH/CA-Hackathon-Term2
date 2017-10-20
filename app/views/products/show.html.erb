@@ -37,7 +37,7 @@
       </article>
 
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-description="A month's subscription"
               data-amount="<%= @product.price * 100 %> "
               data-locale="auto"></script>
