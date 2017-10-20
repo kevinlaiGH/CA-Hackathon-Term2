@@ -12,13 +12,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 
-
-
-gem 'stripe'
-
 gem 'petergate'
-
-gem 'stripe'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
