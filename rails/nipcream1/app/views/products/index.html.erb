@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<!-- bootstrap -->
+
+  <body>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">nipple example</h1>
+        <p class="lead text-muted">100% ultra pure lanolin for sore, cracked nipples Soothes, heals and protects sore, cracked nipples 100% ultra pure lanolin - no preservatives or additives - all natural Clinically proven to accelerate healing
+        So pure that there is no need to remove before breastfeeding</p>
+        <p>
+          <a href="#" class="btn btn-primary">explore</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="album text-muted">
+      <div class="container">
+        <h1>Products</h1>
+        <br>
+        <div class="row">
+            <% @products.each do |product| %>
+              <div class="card">
+             <%=image_tag product.photo ,size: "300x300" %>
+             <p><%= product.description %></p>
+             <p> $ <%= product.price    %></p>
+             <p><%= link_to 'Show', product %>
+                <%= link_to 'Edit', edit_product_path(product) %>
+                <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>copy right all reserve &copy;Nippl.com, <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+      </div>
+    </footer>
