@@ -1,19 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @product.photo %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="row">
+<div class="col-md-3">
+</div>
+<div class="col-md-3">
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+  <%=image_tag @product.photo, size:"400x400" %>
+</div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div class="col-md-3">
+  <p>
+    <strong>Description:</strong><br>
+    <%= @product.description %>
+  </p>
+
+  <p>
+    <strong>Price:</strong><br>
+    $ <%= @product.price %>
+  </p>
+
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+
+</div>
+
+
+<div class="col-md-3">
+</div>
+
+</div>
