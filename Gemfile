@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'petergate'
 
+gem 'stripe'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
