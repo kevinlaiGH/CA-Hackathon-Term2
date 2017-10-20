@@ -10,48 +10,47 @@
   </div>
 
   <div class="col-md-3">
-  <hr>
-    <p>
-      <strong>Description:</strong><br>
-      <%= @product.description %>
-    </p>
-
-  <hr>
-    <p>
-      <strong>Price:</strong><br>
-      $ <%= @product.price %>
-    </p>
     <hr>
+      <p>
+        <strong>Description:</strong><br>
+        <%= @product.description %>
+      </p>
+
+    <hr>
+      <p>
+        <strong>Price:</strong><br>
+        $ <%= @product.price %>
+      </p>
+      <hr>
 
 
-  <%= form_tag charges_path do %>
-    <article>
-      <% if flash[:error].present? %>
-        <div id="error_explanation">
-          <p><%= flash[:error] %></p>
-        </div>
-      <% end %>
-      <label class="amount">
-        <span>Amount: <% @product.price %></span>
-      </label>
-    </article>
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <span>Amount: <% @product.price %></span>
+        </label>
+      </article>
 
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="A month's subscription"
-            data-amount="<%= @product.price * 100 %> "
-            data-locale="auto"></script>
-  <% end %>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>"
+              data-description="A month's subscription"
+              data-amount="<%= @product.price * 100 %> "
+              data-locale="auto"></script>
+    <% end %>
 
-  <p>
-    <strong>Review:</strong><br>
-      <%= render @product.reviews %>
-      <%= link_to "Add reviews", new_product_review_path(@product), class: "btn-custom"  %>
-  </p>
+    <p>
+      <strong>Review:</strong><br>
+        <%= render @product.reviews %>
+        <%= link_to "Add reviews", new_product_review_path(@product), class: "btn-custom"  %>
+    </p>
 
     <%= link_to 'Edit', edit_product_path(@product) %> |
     <%= link_to 'Back', products_path %>
-
 
   </div>
 
@@ -66,7 +65,7 @@
   <hr>
   <div class="reviews">
       <strong>Review:</strong><br>
-        <%= render @product.reviews %>
+      <%= render @product.reviews %>
   </div>
 
   <hr>

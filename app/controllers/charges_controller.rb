@@ -6,7 +6,7 @@ def show
 end
 
 def index
-  @charge
+  
 end
 
 def new

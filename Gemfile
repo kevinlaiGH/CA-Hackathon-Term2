@@ -20,7 +20,7 @@ gem 'petergate'
 
 gem 'stripe'
 
-
+gem 'dotenv-rails', groups: [:development, :test]
 
 #Stripe integratino for payments
 gem 'stripe'

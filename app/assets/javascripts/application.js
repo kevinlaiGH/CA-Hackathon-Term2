@@ -16,3 +16,14 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function() {
+  var myEl = $('.stripe-button-el');
+
+  myEl.click(function (e) {
+      // custom handling here
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("hi");
+  });
+});
