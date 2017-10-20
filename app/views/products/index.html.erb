@@ -22,10 +22,13 @@
         <div class="row">
             <% @products.each do |product| %>
               <div class="card">
-             <%=image_tag product.photo ,size: "300x300" %>
+                <%= link_to product do %>
+                  <%= image_tag product.photo, size: "300x300" %>
+                <% end %>
+
              <p><%= product.description %></p>
              <p> $ <%= product.price    %></p>
-             <p><%= link_to 'Show', product %>
+             <p>
                 <%= link_to 'Edit', edit_product_path(product) %>
                 <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
               </div>
