@@ -2,37 +2,65 @@
 
 
 <div class="row">
-<div class="col-md-3">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-3">
+
+    <%=image_tag @product.photo, size:"400x400" %>
+  </div>
+
+  <div class="col-md-3">
+  <hr>
+    <p>
+      <strong>Description:</strong><br>
+      <%= @product.description %>
+    </p>
+
+  <hr>
+    <p>
+      <strong>Price:</strong><br>
+      $ <%= @product.price %>
+    </p>
+    <hr>
+
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+    <%= link_to 'Back', products_path %>
+
+  </div>
+
+
+  <div class="col-md-3">
+  </div>
+
+  <!-- review -->
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+
+  <hr>
+  <div class="reviews">
+      <strong>Review:</strong><br>
+        <%= render @product.reviews %>
+  </div>
+
+  <hr>
+
+  </div>
+  <div class="col-md-2"> </div>
 </div>
-<div class="col-md-3">
-
-  <%=image_tag @product.photo, size:"400x400" %>
-</div>
-
-<div class="col-md-3">
-  <p>
-    <strong>Description:</strong><br>
-    <%= @product.description %>
-  </p>
-
-  <p>
-    <strong>Price:</strong><br>
-    $ <%= @product.price %>
-  </p>
-
-  <p>
-    <strong>Review:</strong><br>
-      <%= render @product.reviews %>
-      <%= link_to "Add reviews", new_product_review_path(@product), class: "btn-custom"  %>
-  </p>
-
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Back', products_path %>
-
-</div>
 
 
-<div class="col-md-3">
-</div>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+       return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
 
-</div>
+    $('#rating-form').raty({
+      path: '/assets/',
+      scoreName: 'review[rating]'
+    });
+
+</script>
