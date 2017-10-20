@@ -7,10 +7,9 @@
 
     <p><small> commented <strong><%= time_ago_in_words(review.created_at) %> ago </strong> by <%= review.user.email %> </small></p>
 
-      <% if review.user.id == current_user.id %>
+      <% if review.user == current_user %>
         <%= link_to "Delete", product_review_path(review.product, review), method: :delete %>
       <% end %>
-    |  <%= link_to "Add reviews", new_product_review_path(@product), class: "btn-custom"  %>
   </p>
 
 </div>

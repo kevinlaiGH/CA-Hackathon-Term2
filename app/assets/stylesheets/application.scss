@@ -3,12 +3,20 @@
 @import "font-awesome";
 
 
+.mainphoto{
+  margin-top: 5vh;
+  height: 40vh;
+  width: 20vw;
+}
+
+p {
+  
+}
+
 
 body {
   min-height: 75rem; /* Can be removed; just added for demo purposes */
 }
-
-
 
 // product main page
 
@@ -20,8 +28,8 @@ body {
   padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 0;
-  background-image: url("background.jpg");
-  background-size: 1000px 500px;
+  background-image: url("background.svg");
+  background-size: cover;
   background-repeat: no-repeat;
 }
 

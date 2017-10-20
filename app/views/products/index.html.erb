@@ -7,10 +7,23 @@
       <div class="container">
         <h1 class="jumbotron-heading">
           <strong> WE ARE HERE FOR YOUR NIPPLEs</strong></h1>
-        <p class="lead text-muted">100% ultra pure lanolin for sore, cracked nipples Soothes, heals and protects sore, cracked nipples 100% ultra pure lanolin - no preservatives or additives - all natural Clinically proven to accelerate healing
-        So pure that there is no need to remove before breastfeeding</p>
+        <p class="lead text-muted">how sore is your nipple 1 to 5? </p>
         <p>
-          <a href="#" class="btn btn-primary"> nipple </a>
+          <!-- section nipple -->
+          <div class= "row">
+          1
+          <div class="nipple1", id="nipple1"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+
+          <div class="nipple2", id="nipple2"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+
+          <div class="nipple3", id="nipple3"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+
+          <div class="nipple4", id="nipple4"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+
+          <div class="nipple5", id="nipple5"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+          5
+
+
         </p>
       </div>
     </section>
@@ -18,6 +31,8 @@
     <div class="album text-muted">
       <div class="container">
         <h1>Products</h1>
+
+
         <br>
         <div class="row">
             <% @products.each do |product| %>
@@ -42,3 +57,47 @@
         <p>copy right all reserve &copy;Nippl.com, <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
       </div>
     </footer>
+
+
+      <script>
+        $(document).ready(function() {
+            $('#nipple1').click (function() {
+                $('.nipple1').addClass('animated bounce');
+            });
+        });
+        $(document).ready(function() {
+            $('#nipple2').click (function() {
+                $('.nipple2').addClass('animated flash');
+            });
+        });
+        $(document).ready(function() {
+            $('#nipple3').click (function() {
+                $('.nipple3').addClass('animated tada');
+            });
+        });
+        $(document).ready(function() {
+            $('#nipple4').click (function() {
+                $('.nipple4').addClass('animated swing');
+            });
+        });
+        $(document).ready(function() {
+            $('#nipple5').click (function() {
+                $('.nipple5').addClass('animated shake');
+            });
+        });
+      </script>
+
+
+$(document).ready(function() {
+    var audioElement = document.createElement('audio');
+    var animationend = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+    // audioElement.setAttribute('src','sample.mp3');
+		audioElement.setAttribute('src','sample.mp3');
+
+    $('#play').click(function() {
+        audioElement.play();
+        $('.bananadj').removeClass('animated lightSpeedIn');
+        $('.bananadj').addClass('animated infinite pulse');
+    });
+});
