@@ -10,6 +10,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem "font-awesome-rails"
+gem 'stripe'
 
 
 
