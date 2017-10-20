@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :charges 
+  resources :charges
   root to: "products#index"
+
 
 end
