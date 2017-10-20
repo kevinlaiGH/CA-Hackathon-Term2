@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   resources :charges
 
-
-
   resources :products do
     resources :reviews
   end
