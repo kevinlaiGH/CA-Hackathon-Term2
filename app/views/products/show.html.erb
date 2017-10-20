@@ -2,11 +2,10 @@
 
 
 <div class="row">
-  <div class="col-md-3">
-  </div>
-  <div class="col-md-3">
+  <div class="col-md-3"> </div>
 
-    <%=image_tag @product.photo, size:"400x400" %>
+  <div class="col-md-3">
+    <%=image_tag @product.photo , :class => "mainphoto"%>
   </div>
 
   <div class="col-md-3">
@@ -23,56 +22,55 @@
       </p>
       <hr>
 
+    <hr>
+    <strong>Payment:</strong><br>
+        <%= form_tag charges_path do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+            <label class="amount">
+              <span> <% @product.price %></span>
+            </label>
+          </article>
 
-    <%= form_tag charges_path do %>
-      <article>
-        <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="A month's subscription"
+                  data-amount="<%= @product.price * 100 %> "
+                  data-locale="auto"></script>
         <% end %>
-        <label class="amount">
-          <span>Amount: <% @product.price %></span>
-        </label>
-      </article>
 
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="A month's subscription"
-              data-amount="<%= @product.price * 100 %> "
-              data-locale="auto"></script>
-    <% end %>
-
-    <p>
-      <strong>Review:</strong><br>
-        <%= render @product.reviews %>
+    <hr>
         <%= link_to "Add reviews", new_product_review_path(@product), class: "btn-custom"  %>
-    </p>
 
-    <%= link_to 'Edit', edit_product_path(@product) %> |
-    <%= link_to 'Back', products_path %>
-
-  </div>
+      </div>
 
 
-  <div class="col-md-3">
+      <div class="col-md-3">
   </div>
 
   <!-- review -->
   <div class="col-md-2"></div>
   <div class="col-md-8">
+    <hr>
 
-  <hr>
   <div class="reviews">
       <strong>Review:</strong><br>
       <%= render @product.reviews %>
+      <%= link_to 'Edit', edit_product_path(@product) %> |
+      <%= link_to 'Back', products_path %>
   </div>
 
-  <hr>
+
 
   </div>
   <div class="col-md-2"> </div>
 </div>
+
+
 
 
 <script>
