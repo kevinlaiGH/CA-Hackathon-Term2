@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :payment_details
   devise_for :users
   resources :products
   resources :charges
