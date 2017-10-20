@@ -11,7 +11,7 @@
         <p>
           <!-- section nipple -->
           <div class= "row">
-          1
+          <h1>1</h1>
           <div class="nipple1", id="nipple1"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
 
           <div class="nipple2", id="nipple2"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
@@ -21,8 +21,7 @@
           <div class="nipple4", id="nipple4"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
 
           <div class="nipple5", id="nipple5"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-          5
-
+          <h1>5</h1>
 
         </p>
       </div>
@@ -85,7 +84,8 @@
         });
         $(document).ready(function() {
             $('#nipple5').click (function() {
-                $('.nipple5').addClass('animated shake');
+                $('.nipple5').addClass('animated shake'); alert("GO TO HOSPITAL!!");
+
             });
         });
       </script>
