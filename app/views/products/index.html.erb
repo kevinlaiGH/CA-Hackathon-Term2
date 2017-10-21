@@ -12,15 +12,11 @@
           <!-- section nipple -->
           <div class= "row">
           <h1>1</h1>
-          <div class="nipple1", id="nipple1"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-
-          <div class="nipple2", id="nipple2"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-
-          <div class="nipple3", id="nipple3"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-
-          <div class="nipple4", id="nipple4"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-
-          <div class="nipple5", id="nipple5"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+          <div class="nipple1 hvr-grow", id="nipple1"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+          <div class="nipple2 hvr-grow", id="nipple2"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+          <div class="nipple3 hvr-grow", id="nipple3"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+          <div class="nipple4 hvr-grow", id="nipple4"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
+          <div class="nipple5 hvr-grow", id="nipple5"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
           <h1>5</h1>
 
         </p>
@@ -61,46 +57,35 @@
     </footer>
 
 
-      <script>
-        $(document).ready(function() {
-            $('#nipple1').click (function() {
-                $('.nipple1').addClass('animated bounce');
-            });
-        });
-        $(document).ready(function() {
-            $('#nipple2').click (function() {
-                $('.nipple2').addClass('animated flash');
-            });
-        });
-        $(document).ready(function() {
-            $('#nipple3').click (function() {
-                $('.nipple3').addClass('animated tada');
-            });
-        });
-        $(document).ready(function() {
-            $('#nipple4').click (function() {
-                $('.nipple4').addClass('animated swing');
-            });
-        });
-        $(document).ready(function() {
-            $('#nipple5').click (function() {
-                $('.nipple5').addClass('animated shake'); alert("GO TO HOSPITAL!!");
+    <script>
+      var bounceNipple = function(combo, animationName, showAlert) {
+        var animationClasses = 'animated ' + animationName;
+        $('.' + combo).addClass(animationClasses);
+        //  console.log('.nipple added classes to combo: %s, %s', combo, animationClasses);
+        if (showAlert == true) {
+          alert("GO TO HOSPITAL!!");
+        }
+        setTimeout(function(){
+          $('.' + combo).removeClass(animationClasses);
+          // console.log('.nipple removed classes to combo: %s, %s', combo, animationClasses);
+        }, 1500);
+      };
 
+      $(document).ready(function() {
+          var animationActions = ['bounce', 'flash', 'tada', 'swing', 'shake'];
+          var prefix = 'nipple';
+          animationActions.forEach(function (animationName, animationActionNo) {
+            animationActionNo += 1;
+            console.log(`.nipple event listener generated: ${animationName}${animationActionNo}`); // string interpolation
+            // console.log('.nipple event listener: %s%d', animationName, animationActionNo); // string placeholders
+            var combo = prefix + animationActionNo;
+            $('#' + combo).click (function() {
+              if (animationName == 'shake')
+                bounceNipple(combo, animationName, true);
+              else {
+                bounceNipple(combo, animationName, false);
+              }
             });
-        });
-      </script>
-
-
-$(document).ready(function() {
-    var audioElement = document.createElement('audio');
-    var animationend = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-
-    // audioElement.setAttribute('src','sample.mp3');
-		audioElement.setAttribute('src','sample.mp3');
-
-    $('#play').click(function() {
-        audioElement.play();
-        $('.bananadj').removeClass('animated lightSpeedIn');
-        $('.bananadj').addClass('animated infinite pulse');
-    });
-});
+          });
+      });
+    </script>
