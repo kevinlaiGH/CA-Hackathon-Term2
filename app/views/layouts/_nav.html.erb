@@ -8,6 +8,12 @@
       </a>
     </div>
 
+    <% if signed_in? %>
+      <p style="margin-top:6vh; margin-left:1vw;"> welocme! <%= current_user.email %> </p>
+    <% else %>
+      <p style="margin-top:6vh; margin-left:1vw;"> Hello! Guset User </p>
+    <% end %>
+
 
     <% if user_signed_in? %>
          <ul class="navbar-nav ml-auto">

@@ -10,10 +10,10 @@ module CurrentUserConcern
 #need to create in order to user petergate  => ##application/helper
   def guest_user
     guest = GuestUser.new
-    guest.name = "Guest User"
-    guest.first_name = "Guest"
-    guest.last_name = "User"
-    guest.email = "guest@example.com"
+    # guest.name = "Guest User"
+    # guest.first_name = "Guest"
+    # guest.last_name = "User"
+    guest.email = "Guest User"
     guest
   end
 
