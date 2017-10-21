@@ -25,8 +25,11 @@
     <div class="album text-muted">
       <div class="container">
         <h1>Products</h1>
-
-
+          <div style="float: right;"> <%= paginate @products %> </p>
+          </div>
+        <br>
+        <br>
+        <br>
         <br>
         <div class="row">
             <% @products.each do |product| %>
@@ -42,6 +45,7 @@
                 <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
               </div>
             <% end %>
+            <hr />
         </div>
       </div>
     </div>

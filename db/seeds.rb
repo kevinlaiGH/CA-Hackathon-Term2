@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-10.times do |product|
+100.times do |product|
   Product.create!(
    photo: File.open(Rails.root+"app/assets/images/nipple.jpg"),
    description: "Lansinoh HPA LANOLIN - 100% ultra pure lanolin
