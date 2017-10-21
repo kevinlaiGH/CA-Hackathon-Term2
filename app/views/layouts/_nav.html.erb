@@ -1,44 +1,35 @@
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <div class="row"style="margin-left: 4vw;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="nav-icon">
       <a class="nav-link active">
-              <a href="" onclick="nipple_add();return false;"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple"%></a><script type="text/javascript" src="http://www.nippleit.com/js/nippleit.js"></script>
-              <a href="/">
-              <%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple" %> </a>
+        <!-- navi_logo -->
+        <a href="" onclick="nipple_add();return false;"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple"%></a><script type="text/javascript" src="http://www.nippleit.com/js/nippleit.js"></script>
+        <a href="/"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple" %> </a>
       </a>
     </div>
 
-    <!-- <#%= link_to image_tag("logo.png", :type => :upload,
-           :width => 100, :height => 50, :crop => :fill), root_path %> -->
 
-    <div class="col-md-9"> </div>
+    <% if user_signed_in? %>
+         <ul class="navbar-nav ml-auto">
+      <!-- New Post -->
+              <%= link_to new_product_path, method: :get, class: "nav-link" do %>
+                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">new</i>
+              <% end %>
+      <!-- sign out -->
+               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+               <i class="fa fa-sign-out fa-lg" aria-hidden="true">sign out</i>
+               <% end %>
+        </ul>
+    <% else %>
+        <ul class="navbar-nav ml-auto">
+               <%= link_to new_user_registration_path , method: :get, class: "nav-link" do %>
+               <i class="fa fa-user-circle-o fa-lg" aria-hidden="true">sign up</i>
+               <% end %>
 
-        <% if user_signed_in? %>
-           <!-- New Post', -->
-       <ul class="navbar-nav ml-auto">
+               <%= link_to new_user_session_path , method: :get, class: "nav-link" do %>
+               <i class="fa fa-sign-in fa-lg" aria-hidden="true">sign in</i>
+               <% end %>
 
-                  <%= link_to new_product_path, method: :get, class: "nav-link" do %>
-                    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
-                  <% end %>
-
-          <!-- 'sign out', -->
-                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-                   <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
-                   <% end %>
-
-        <% else %>
-                  <div class="row pull-right">
-                       <%= link_to new_user_registration_path , method: :get, class: "nav-link" do %>
-                       <i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
-                       <% end %>
-
-                       <%= link_to new_user_session_path , method: :get, class: "nav-link" do %>
-                       <i class="fa fa-sign-in fa-lg" aria-hidden="true"></i>
-                       <% end %>
-                  </div>
-
-      </ul>
-        <% end %>
-
-  </nav>
+        </ul>
+    <% end %>
+</nav>
