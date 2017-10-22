@@ -11,7 +11,7 @@ Use Maslow’s hierarchy to help find needs: combine two needs from the diagram
 - As a user I would like my item delivered quickly (express postage)
 
 ### Entity Relationship Diagram:
-
+![alt text](/public/ERD.png)
 
 
 # NippleJS
