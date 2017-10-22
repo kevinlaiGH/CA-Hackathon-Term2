@@ -1,0 +1,15 @@
+
+
+<div class="review">
+
+    <div class="review-rating" data-score="<%= review.rating %>"> </div>
+      <p class="review-comment"> <%= review.comment %> </p>
+
+    <p><small> commented <strong><%= time_ago_in_words(review.created_at) %> ago </strong> by <%= review.user.email %> </small></p>
+
+      <% if review.user == current_user %>
+        <%= link_to "Delete", product_review_path(review.product, review), method: :delete %>
+      <% end %>
+  </p>
+
+</div>

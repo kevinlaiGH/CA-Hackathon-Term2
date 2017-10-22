@@ -1,0 +1,41 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="nav-icon">
+      <a class="nav-link active">
+        <!-- navi_logo -->
+        <a href="" onclick="nipple_add();return false;"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple"%></a><script type="text/javascript" src="http://www.nippleit.com/js/nippleit.js"></script>
+        <a href="/"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple" %> </a>
+      </a>
+    </div>
+
+    <% if signed_in? %>
+      <p style="margin-top:6vh; margin-left:1vw;"> welocme! <%= current_user.email %> </p>
+    <% else %>
+      <p style="margin-top:6vh; margin-left:1vw;"> Hello! Guset User </p>
+    <% end %>
+
+
+    <% if user_signed_in? %>
+         <ul class="navbar-nav ml-auto">
+      <!-- New Post -->
+              <%= link_to new_product_path, method: :get, class: "nav-link" do %>
+                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">new</i>
+              <% end %>
+      <!-- sign out -->
+               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+               <i class="fa fa-sign-out fa-lg" aria-hidden="true">sign out</i>
+               <% end %>
+        </ul>
+    <% else %>
+        <ul class="navbar-nav ml-auto">
+               <%= link_to new_user_registration_path , method: :get, class: "nav-link" do %>
+               <i class="fa fa-user-circle-o fa-lg" aria-hidden="true">sign up</i>
+               <% end %>
+
+               <%= link_to new_user_session_path , method: :get, class: "nav-link" do %>
+               <i class="fa fa-sign-in fa-lg" aria-hidden="true">sign in</i>
+               <% end %>
+
+        </ul>
+    <% end %>
+</nav>

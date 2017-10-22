@@ -1,0 +1,29 @@
+
+<div class="col-md-10 col-md-offset-1">
+
+  <div class="edit-review-form">
+    <h1> Edit Review </h1>
+
+    <%= form_for([@product, @review]) do |f| %>
+      <div id="rating-form">
+        <label> Rating </label> 
+        <%= f.label :rating %><br/>
+      </div>
+      <div class="field">
+        <%= f.label :comment %><br />
+        <%= f.text_area :comment %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

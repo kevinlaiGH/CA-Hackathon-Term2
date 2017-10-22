@@ -1,19 +1,120 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @product.photo %>
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+    <div class="col-md-3">
+      <%=image_tag @product.photo , :class => "mainphoto"%>
+      <p>
+      <%= link_to 'Edit', edit_product_path(@product) %> |
+      <%= link_to 'Back', products_path %>
+      </p>
+    </div>
 
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
+    <div class="col-md-3">
+          <hr>
+            <p>
+              <strong>Description:</strong><br>
+              <%= @product.description %>
+            </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+          <hr>
+            <p>
+              <strong>Price:</strong><br>
+              $ <%= @product.price %>
+            </p>
+            <hr>
+
+          <hr>
+          <strong>Payment:</strong><br>
+              <%= form_tag charges_path do %>
+                <article>
+                  <% if flash[:error].present? %>
+                    <div id="error_explanation">
+                      <p><%= flash[:error] %></p>
+                    </div>
+                  <% end %>
+                  <label class="amount">
+                    <span> <% @product.price %></span>
+                  </label>
+                </article>
+
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="A month's subscription"
+                        data-amount="<%= @product.price * 100 %> "
+                        data-locale="auto"></script>
+              <% end %>
+
+              <hr>
+
+            <!-- average-raview -->
+              <div class="average_review">
+                <div class="row">
+                      <div class="col-md-5">
+                          <strong>Average Rating: <%= @average_review %> </strong><br>
+                          <div class="average_review_rating" data-score=<%= @average_review %> </div>
+                      </div>
+                      <div>
+                        <p> <span class="number-of-reviews"> <em> From: </em> <%= @product.reviews.count %> reviews </span></p>
+                      </div>
+                  </div>
+                    <div class="col-md-7">
+                      <br>
+                     <%= link_to "Add customer reviews", new_product_review_path(@product), class: "btn btn-primary"  %>
+                   </div>
+               </div>
+
+      <div class="col-md-3">
+      </div>
+
+  </div>
+</div>
+
+    <!-- review -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+    <hr> <hr>
+    <div class="reviews">
+        <strong>Review:</strong><br>
+        <%= render @product.reviews %>
+    </div>
+
+    </div>
+    <div class="col-md-3"> </div>
+</div>
+</div>
+
+
+
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function(){
+       return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+
+    $('#rating-form').raty({
+      path: '/assets/',
+      scoreName: 'review[rating]'
+    });
+</script>
+
+<script>
+  $('.average_review_rating').raty({
+    readOnly: true,
+    score: function(){
+       return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
