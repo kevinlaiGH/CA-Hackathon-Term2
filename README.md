@@ -16,7 +16,7 @@ Use Maslow’s hierarchy to help find needs: combine two needs from the diagram
 
 # NippleJS
 
-using hover and aniameted class and JS
+using hover and animated class and JS
 ```
 <script>
   var bounceNipple = function(combo, animationName, showAlert) {
