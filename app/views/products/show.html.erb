@@ -21,40 +21,36 @@
             </p>
 
           <hr>
+            <div class="row">
+                <div class="col-md-6">
             <p>
               <strong>Price:</strong><br>
-              $ <%= @product.price %>
+              <%= number_to_currency(@product.price, unit: "$") %>
+          <!-- form-with -->
+
             </p>
+            </div>
+
+              <div class="col-md-6">
+              <!-- add_cart -->
+              <br>
+              <%= link_to "Add to Cart", add_to_cart_product_path(@product), class: "btn btn-primary" %>
+
+                 <!-- <#%= form_with(model: @product, method: :post) do |f| %>
+                 <#%= f.label :quantity %>
+                 <#%= f.number_field :quantity , min: "0" %>
+                 <#%= f.submit "Add cart", class: "btn btn-primary" %>
+                 <#% end %> -->
+              </div>
+              </div>
             <hr>
-
-          <hr>
-          <strong>Payment:</strong><br>
-              <%= form_tag charges_path do %>
-                <article>
-                  <% if flash[:error].present? %>
-                    <div id="error_explanation">
-                      <p><%= flash[:error] %></p>
-                    </div>
-                  <% end %>
-                  <label class="amount">
-                    <span> <% @product.price %></span>
-                  </label>
-                </article>
-
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                        data-description="A month's subscription"
-                        data-amount="<%= @product.price * 100 %> "
-                        data-locale="auto"></script>
-              <% end %>
-
-              <hr>
-
+            <hr>
+            <br>
             <!-- average-raview -->
               <div class="average_review">
                 <div class="row">
                       <div class="col-md-5">
-                          <strong>Average Rating: <%= @average_review %> </strong><br>
+                          <strong>Average Rating: <%= @average_review %> </strong> <br>
                           <div class="average_review_rating" data-score=<%= @average_review %> </div>
                       </div>
                       <div>
@@ -63,13 +59,12 @@
                   </div>
                     <div class="col-md-7">
                       <br>
-                     <%= link_to "Add customer reviews", new_product_review_path(@product), class: "btn btn-primary"  %>
+                     <%= link_to "Add customer reviews", new_product_review_path(@product), class: "btn btn-secondary"  %>
                    </div>
                </div>
+        </div>
 
-      <div class="col-md-3">
-      </div>
-
+        <div class="col-md-3"> </div>
   </div>
 </div>
 
@@ -80,7 +75,7 @@
     <div class="col-md-3">
     </div>
     <div class="col-md-6">
-    <hr> <hr>
+    <hr>
     <div class="reviews">
         <strong>Review:</strong><br>
         <%= render @product.reviews %>

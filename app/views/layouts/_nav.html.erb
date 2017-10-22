@@ -9,14 +9,20 @@
     </div>
 
     <% if signed_in? %>
-      <p style="margin-top:6vh; margin-left:1vw;"> welocme! <%= current_user.email %> </p>
+      <p style="margin-top:6vh; margin-left:1vw;"> welocme! <%= current_user.email %> role: <%= current_user.role %>  </p>
     <% else %>
       <p style="margin-top:6vh; margin-left:1vw;"> Hello! Guset User </p>
     <% end %>
 
 
+
+
     <% if user_signed_in? %>
          <ul class="navbar-nav ml-auto">
+      <!-- shopping cart -->
+           <% if @cart.present? %>
+             <%= link_to "Cart(#{@cart.cart_items.count})" , @cart, class: "nav-link" %>
+           <% end %>
       <!-- New Post -->
               <%= link_to new_product_path, method: :get, class: "nav-link" do %>
                 <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">new</i>
