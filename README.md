@@ -4,10 +4,10 @@
 Use Maslow’s hierarchy to help find needs: combine two needs from the diagram
 
 ### User stories:
-- As a user, I would like to buy nipple cream from another country
-- As a user, I would like to buy cheap and good quality nipple cream
-- As the user who want to buy a nipple creame and i want to know the option which option suitable for me
-- As a user I would like somebody to recommend nipple cream specifically for my nipples
+- As a user, I would like to buy cream from another country
+- As a user, I would like to buy cheap and good quality cream
+- As the user who want to buy cream and i want to know the option which option suitable for me
+- As a user I would like somebody to recommend the cream specifically for my body
 - As a user I would like my item delivered quickly (express postage)
 
 ### Entity Relationship Diagram:
