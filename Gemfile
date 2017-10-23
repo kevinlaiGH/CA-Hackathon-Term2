@@ -11,8 +11,9 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
 gem "font-awesome-rails"
-
 gem 'petergate'
+gem 'kaminari'
+gem "bootstrap-kaminari-views"
 
 gem 'dotenv-rails', groups: [:development, :test]
 

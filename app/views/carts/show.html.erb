@@ -1,0 +1,62 @@
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2">
+</div>
+
+  <div class="col-md-8">
+    <table class="table pull-right">
+      <tr>
+        <th>Product</th>
+        <th>description</th>
+        <th>Qty</th>
+        <th>price</th>
+        <th>total</th>
+      </tr>
+
+     <% @cart.cart_items.each do |item|%>
+       <tr>
+          <td><%= image_tag item.product.photo , size: "100x100" %></td>
+          <td><%= item.product.description %>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.product.price) %></td>
+          <td ><%= number_to_currency(item.product.price * item.quantity) %></td>
+       </tr>
+    <% end %>
+
+      <tr>
+        <td colspan="4"> Total </td>
+        <td><%= number_to_currency(@cart.total_price)%>  </td>
+      </tr>
+      <tr>
+      <td colspan="4"> Payment </td>
+      <td> <%= form_tag charges_path do %>
+                <article>
+                  <% if flash[:error].present? %>
+                    <div id="error_explanation">
+                      <p><%= flash[:error] %></p>
+                    </div>
+                  <% end %>
+                  <label class="amount">
+                    <span> <% @cart.total_price %></span>
+                  </label>
+                </article>
+
+
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="A month's subscription"
+                        data-amount="<%= @cart.total_price * 100 %> "
+                        data-locale="auto"></script>
+              <% end %>
+        </td>
+      </tr>
+
+     </table>
+   </div>
+
+ <div class="col-md-2">
+
+ </div>
+</div>

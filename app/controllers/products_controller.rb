@@ -1,16 +1,22 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, admin: :all
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(10)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    if @product.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @product.reviews.average(:rating).round(1)
+    end
   end
 
   # GET /products/new
@@ -64,6 +70,23 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  # Add and remove favorite recipes
+ # for current_user
+ def add_to_cart
+   if session[:cart_id].blank?
+     cart = Cart.create(status:"pending")
+     session[:cart_id] = cart.id
+   else
+     cart = Cart.find(session[:cart_id])
+   end
+
+     product = Product.find(params[:id])
+     cart.cart_items.create(product_id: product.id, quantity: 1)
+     redirect_to cart
+ end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
