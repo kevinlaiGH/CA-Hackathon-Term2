@@ -262,3 +262,8 @@ each file inside should be like this
       <%= link_to 'Back', products_path %>
   </div>
   ```
+
+
+```
+the end
+```
