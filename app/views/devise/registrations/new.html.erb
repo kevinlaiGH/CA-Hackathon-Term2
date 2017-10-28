@@ -26,6 +26,18 @@
           <%= f.password_field :password_confirmation, autocomplete: "off" ,class: "form-control" %>
         </div>
 
+<!-- select_tag -->
+        <!-- <div class="form-gorup">
+          <#%= f.label "choose 'buyer' or 'seller' " %><br />
+          <#%= f.select :role, [['admin'], ['user']]%>
+        </div> -->
+<br>
+<!-- check_box -->
+        <div class="form-check">
+             <%= f.label "sign up as a buyer" %>
+             <%= f.check_box :role, { class:"rolecheck", checked: false }, 'admin', 'user' %>
+        </div>
+
         <br>
 
         <div class="form-gorup">

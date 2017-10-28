@@ -1,54 +1,58 @@
-<p id="notice"><%= notice %></p>
-
 <!-- bootstrap -->
-
   <body>
+
+    <% if @products.blank? %>
+      <h4>There are no items containing the <%= params[:search] %>.</h4>
+    <% end %>
+
     <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">
-          <strong> WE ARE HERE FOR YOUR NIPPLEs</strong></h1>
-        <p class="lead text-muted">how sore is your nipple 1 to 5? </p>
-        <p>
-          <!-- section nipple -->
-          <div class= "row" style="margin-left: 40px;">
-          <h1>1</h1>
-          <div class="nipple1 hvr-grow", id="nipple1"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-          <div class="nipple2 hvr-grow", id="nipple2"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-          <div class="nipple3 hvr-grow", id="nipple3"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-          <div class="nipple4 hvr-grow", id="nipple4"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-          <div class="nipple5 hvr-grow", id="nipple5"> <%=image_tag "nipple-imgs.png" ,size: "100x100"%> </div>
-          <h1>5</h1>
-        </p>
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/assets/carousel-1.jpg" class="d-block w-100" alt="First">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/carousel-2.jpg" class="d-block w-100" alt="First">
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/carousel-3.jpg" class="d-block w-100" alt="First">
+        </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
     </section>
 
     <div class="album text-muted">
       <div class="container">
+
         <h1>Products</h1>
           <div style="float: right;"> <%= paginate @products %> </p>
           </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="row">
-            <% @products.each do |product| %>
-              <div class="card">
-                <%= link_to product do %>
-                  <%= image_tag product.photo, size: "300x300" %>
-                <% end %>
 
-             <p><%= product.description %></p>
-             <p> $ <%= product.price    %></p>
-             <p>
-                <%= link_to 'Edit', edit_product_path(product) %>
-                <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-              </div>
-            <% end %>
-            <hr />
-        </div>
-      </div>
-    </div>
+          <!-- filterrific -->
+            <%= form_for_filterrific @filterrific do |f| %>
+                <div class="form-group">
+                  Search
+                  <%= f.text_field(:search_query, class: 'filterrific-periodically-observed') %>
+                  Registered after
+                  <%= f.text_field(:with_created_at_gte, class: 'js-datepicker') %>
+                <div>
+                  <!-- Sorted by
+                  <#%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+                </div> -->
+                  <%= link_to('Reset filters', reset_filterrific_url,) %>
+                  <%= render_filterrific_spinner %>
+                  </div>
+              <% end %>
+
+              <%= render(partial: 'products/list', locals: { products: @products }) %>
 
     <footer class="text-muted">
       <div class="container">

@@ -15,76 +15,71 @@
 
     <div class="col-md-3">
           <hr>
-            <p>
-              <strong>Description:</strong><br>
-              <%= @product.description %>
-            </p>
-
+            <p> <strong>Description:</strong> <br>
+                <%= @product.description %> </p>
           <hr>
-            <div class="row">
-                <div class="col-md-6">
-            <p>
-              <strong>Price:</strong><br>
+
+      <!-- price -->
+            <p> <strong>Price:</strong> <br>
               <%= number_to_currency(@product.price, unit: "$") %>
-          <!-- form-with -->
-
             </p>
-            </div>
-
-              <div class="col-md-6">
-              <!-- add_cart -->
-              <br>
-              <%= link_to "Add to Cart", add_to_cart_product_path(@product), class: "btn btn-primary" %>
-
-                 <!-- <#%= form_with(model: @product, method: :post) do |f| %>
-                 <#%= f.label :quantity %>
-                 <#%= f.number_field :quantity , min: "0" %>
-                 <#%= f.submit "Add cart", class: "btn btn-primary" %>
-                 <#% end %> -->
-              </div>
-              </div>
-            <hr>
-            <hr>
-            <br>
-            <!-- average-raview -->
-              <div class="average_review">
-                <div class="row">
-                      <div class="col-md-5">
-                          <strong>Average Rating: <%= @average_review %> </strong> <br>
-                          <div class="average_review_rating" data-score=<%= @average_review %> </div>
-                      </div>
-                      <div>
-                        <p> <span class="number-of-reviews"> <em> From: </em> <%= @product.reviews.count %> reviews </span></p>
-                      </div>
+        <!-- form-with -->
+       <%= form_for(@cart_item) do |f| %>
+              <!-- <div class="row"> -->
+                  <div class="form-group">
+                    <%= f.label :quantity %>
+                    <%= f.number_field :quantity , min:"0"%>
+                      <!-- getting the product_id and passing to the cartitem-->
+                    <%= f.hidden_field :product_id, value: @product.id %>
                   </div>
-                    <div class="col-md-7">
-                      <br>
-                     <%= link_to "Add customer reviews", new_product_review_path(@product), class: "btn btn-secondary"  %>
-                   </div>
+                  <div class="form-group">
+                    <%= f.submit'add to cart', :class => 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+        <hr>
+        <hr>
+        <br>
+        <!-- average-raview -->
+          <div class="average_review">
+            <div class="row">
+                  <div class="col-md-5">
+                      <strong>Average Rating: <%= @average_review %> </strong> <br>
+                      <div class="average_review_rating" data-score=<%= @average_review %> </div>
+                  </div>
+                  <div>
+                    <p> <span class="number-of-reviews"> <em> From: </em> <%= @product.reviews.count %> reviews </span></p>
+                  </div>
+              </div>
+                <div class="col-md-7">
+                  <br>
+                 <%= link_to "Add customer reviews", new_product_review_path(@product), class: "btn btn-secondary"  %>
                </div>
-        </div>
-
-        <div class="col-md-3"> </div>
+           </div>
+      </div>
   </div>
-</div>
 
-    <!-- review -->
+          <div class="col-md-3"> </div>
+    </div>
+  </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3">
-    </div>
-    <div class="col-md-6">
-    <hr>
-    <div class="reviews">
-        <strong>Review:</strong><br>
-        <%= render @product.reviews %>
-    </div>
 
-    </div>
-    <div class="col-md-3"> </div>
-</div>
-</div>
+<!-- review -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6">
+      <hr>
+      <div class="reviews">
+          <strong>Review:</strong><br>
+          <%= render @product.reviews %>
+      </div>
+
+      </div>
+      <div class="col-md-3"> </div>
+  </div>
+  </div>
 
 
 

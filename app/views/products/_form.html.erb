@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :photo %>
-    <%= form.file_field :photo %> 
+    <%= form.file_field :photo %>
     <%= form.hidden_field :photo_cache %>
   </div>
 
@@ -26,6 +26,9 @@
     <%= form.label :price %>
     <%= form.number_field :price, id: :product_price %>
   </div>
+
+<!-- selectcategory -->
+  <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select Category") %>
 
   <div class="actions">
     <%= form.submit %>

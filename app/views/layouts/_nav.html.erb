@@ -1,47 +1,70 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="nav-icon">
-      <a class="nav-link active">
-        <!-- navi_logo -->
-        <a href="" onclick="nipple_add();return false;"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple"%></a><script type="text/javascript" src="http://www.nippleit.com/js/nippleit.js"></script>
-        <a href="/"><%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple" %> </a>
-      </a>
-    </div>
+<nav class="navbar navbar-expand-lg nnavbar-dark bg-dark">
+        <div class="nav-icon">
+          <a class="nav-link">
+            <!-- navi_logo -->
+            <!-- <a href="" onclick="nipple_add();return false;"><#%=image_tag "nipple-imgs.png" ,size: "100x100" ,class:"nipple hvr-buzz", id: "nipple"%></a><script type="text/javascript" src="http://www.nippleit.com/js/nippleit.js"></script> -->
+            <a href="/"><%=image_tag "amazon.png", class:"logo nipple hvr-buzz", id: "nipple" %> </a>
+          </a>
+        </div>
 
-    <% if signed_in? %>
-      <p style="margin-top:6vh; margin-left:1vw;"> welocme! <%= current_user.email %> role: <%= current_user.role %>  </p>
-    <% else %>
-      <p style="margin-top:6vh; margin-left:1vw;"> Hello! Guset User </p>
-    <% end %>
+        <p>
+        <% if signed_in? %>
+          <p style="margin-top:6vh; margin-left:1vw; color:white;"> welocme! <%= current_user.email %> role: <%= current_user.role %>  </p>
+        <% else %>
+          <p style="margin-top:6vh; margin-left:vw; color: white;"> Hello! Guset User </p>
+        <% end %>
+        </p>
+<!-- search -->
+        <!-- <div class="form-group" style= "display: inline-block; margin-left: 10vw; margin-top: 5vh;">
+          <#%= form_tag(products_path, :method => "get", id: "search-form") do %>
+          <#%= text_field_tag :search, params[:search], placeholder: "Search items" %>
+          <#%= submit_tag "Search", :name => nil%>
+          <#% end %>
+        </div> -->
 
+<!-- sort -->
+<!-- dropdown filter -->
+        <!-- <ul class="nav navbar-nav">
+           <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role-="bottun"　aria-expand="false">Sort <span class="caret"></span></a>
 
+               <ul class="dropdown-menu" role="menu">
+                 <#% Category.all.each do |category| %>
+                 <li class="<%= 'active' if params[:category] == :category.try(:name) %> ">
+                   <#%= link_to category.name, products_path(category:category.name), class: "link" %>
+                 </li>
+             <#% end %>
+             </ul>
+           </li>
+        </ul> -->
 
-
-    <% if user_signed_in? %>
-         <ul class="navbar-nav ml-auto">
-      <!-- shopping cart -->
-           <% if @cart.present? %>
-             <%= link_to "Cart(#{@cart.cart_items.count})" , @cart, class: "nav-link" %>
-           <% end %>
-      <!-- New Post -->
-              <%= link_to new_product_path, method: :get, class: "nav-link" do %>
-                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">new</i>
-              <% end %>
-      <!-- sign out -->
-               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
-               <i class="fa fa-sign-out fa-lg" aria-hidden="true">sign out</i>
+        <% if user_signed_in? %>
+             <ul class="navbar-nav ml-auto">
+          <!-- shopping cart -->
+               <% if @cart.present? %>
+                 <%= link_to "Cart(#{@cart.cart_items.count})" , @cart, class: "nav-link" %>
                <% end %>
-        </ul>
-    <% else %>
-        <ul class="navbar-nav ml-auto">
-               <%= link_to new_user_registration_path , method: :get, class: "nav-link" do %>
-               <i class="fa fa-user-circle-o fa-lg" aria-hidden="true">sign up</i>
-               <% end %>
+          <!-- New Post -->
+                  <%= link_to new_product_path, method: :get, class: "nav-link" do %>
+                    <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true">new</i>
+                  <% end %>
+          <!-- sign out -->
+                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                   <i class="fa fa-sign-out fa-lg" aria-hidden="true">sign out</i>
+                   <% end %>
+            </ul>
+        <% else %>
+            <ul class="navbar-nav ml-auto">
+                   <%= link_to new_user_registration_path , method: :get, class: "nav-link" do %>
+                   <i class="fa fa-user-circle-o fa-lg" aria-hidden="true">sign up</i>
+                   <% end %>
 
-               <%= link_to new_user_session_path , method: :get, class: "nav-link" do %>
-               <i class="fa fa-sign-in fa-lg" aria-hidden="true">sign in</i>
-               <% end %>
+                   <%= link_to new_user_session_path , method: :get, class: "nav-link" do %>
+                   <i class="fa fa-sign-in fa-lg" aria-hidden="true">sign in</i>
+                   <% end %>
 
-        </ul>
-    <% end %>
+            </ul>
+        <% end %>
+
 </nav>

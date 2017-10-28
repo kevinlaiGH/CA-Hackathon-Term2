@@ -1,12 +1,12 @@
-
 class ChargesController < ApplicationController
-  before_action :authenticate_user!
-def show
 
+  before_action :authenticate_user!
+
+def show
 end
 
 def index
-  
+
 end
 
 def new

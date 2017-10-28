@@ -7,6 +7,7 @@ class User < ApplicationRecord
   petergate(roles: [:admin], multiple: false)                                      ##
   ############################################################################################
 
+  validates_presence_of :role
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -17,6 +18,6 @@ class User < ApplicationRecord
   has_many :reviews
 
   has_many :cart_items
-  has_many :favorites, through: :cart_items, source: :product
+  # has_many :favorites, through: :cart_items, source: :product
 
 end
